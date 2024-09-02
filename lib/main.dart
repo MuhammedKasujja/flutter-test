@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
-      home: TextFieldWithContextMenu(),
+      home: PlutoGridExample(),
       // home: const MyHomePage(),
     );
   }

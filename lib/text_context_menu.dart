@@ -57,47 +57,49 @@ class _TextFieldWithContextMenuState extends State<TextFieldWithContextMenu> {
       appBar: AppBar(
         title: const Text('Context Menu Example'),
       ),
-      body:  SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 20),
-            const AutoComplete(),
+            AutoComplete(onSelected: (value) {
+              print('AutoCompleteValue $value');
+            }),
             const SizedBox(height: 20),
             CustomAutocomplete<String>(
-            options: const [
-              'Apple',
-              'Banana',
-              'Cherry',
-              'Date',
-              'Elderberry',
-              'Fig',
-              'Grape',
-            ],
-            displayStringForOption: (String option) => option,
-            decoration: const InputDecoration(
-              labelText: 'Search for a fruit',
-              border: OutlineInputBorder(),
+              options: const [
+                'Apple',
+                'Banana',
+                'Cherry',
+                'Date',
+                'Elderberry',
+                'Fig',
+                'Grape',
+              ],
+              displayStringForOption: (String option) => option,
+              decoration: const InputDecoration(
+                labelText: 'Search for a fruit',
+                border: OutlineInputBorder(),
+              ),
+              onSelected: (String selection) {},
             ),
-            onSelected: (String selection) {},
-          ),
-          SizedBox(height: 20),
-          CustomAutocomplete<String>(
-            options: const [
-              'Apple',
-              'Banana',
-              'Cherry',
-              'Date',
-              'Elderberry',
-              'Fig',
-              'Grape',
-            ],
-            displayStringForOption: (String option) => option,
-            decoration: const InputDecoration(
-              labelText: 'Search for a fruit',
-              border: OutlineInputBorder(),
+            SizedBox(height: 20),
+            CustomAutocomplete<String>(
+              options: const [
+                'Apple',
+                'Banana',
+                'Cherry',
+                'Date',
+                'Elderberry',
+                'Fig',
+                'Grape',
+              ],
+              displayStringForOption: (String option) => option,
+              decoration: const InputDecoration(
+                labelText: 'Search for a fruit',
+                border: OutlineInputBorder(),
+              ),
+              onSelected: (String selection) {},
             ),
-            onSelected: (String selection) {},
-          ),
             // Padding(
             //   padding: const EdgeInsets.all(16.0),
             //   child: TextField(

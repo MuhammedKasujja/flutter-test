@@ -8,6 +8,13 @@ class PlutoGridExample extends StatefulWidget {
   State<PlutoGridExample> createState() => _PlutoGridExampleState();
 }
 
+class Employee {
+  final String name;
+  final int age;
+
+  Employee(this.name, this.age);
+}
+
 class _PlutoGridExampleState extends State<PlutoGridExample> {
   List<PlutoColumn> columns = [];
   List<PlutoRow> rows = [];
@@ -18,10 +25,29 @@ class _PlutoGridExampleState extends State<PlutoGridExample> {
 
     columns = [
       PlutoColumn(
-        title: 'Name',
-        field: 'name',
+        title: 'ID',
+        field: 'id',
         type: PlutoColumnType.text(),
         enableEditingMode: false, // Enable editing for this column
+      ),
+      PlutoColumn(
+        title: 'Name',
+        field: 'name',
+        type: PlutoColumnType<Employee>.autocomplete(
+            options: [
+              Employee('Kato', 45),
+              Employee('Kimera', 30),
+              Employee('Ismail', 90),
+              Employee('Kasagga', 24),
+            ],
+            itemBuilder: (context, option) => Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text('${option.name} -- [${option.age}]'),
+                ),
+            displayStringForOption: (item) {
+              return item.name;
+            }),
+        enableEditingMode: true,
       ),
       PlutoColumn(
         title: 'Age',
@@ -29,20 +55,13 @@ class _PlutoGridExampleState extends State<PlutoGridExample> {
         type: PlutoColumnType.number(),
         enableEditingMode: true, // Enable editing for this column
       ),
-      PlutoColumn(
-        title: 'Role',
-        field: 'role',
-        type: PlutoColumnDynamic(),
-        renderer: (rendererContext) => rendererContext.cell.value as Widget,
-        enableEditingMode: true, // Enable editing for this column
-      ),
     ];
     rows = List<PlutoRow>.generate(
-      1000,
+      25,
       (i) => PlutoRow(cells: {
+        'id': PlutoCell(value: Text('test --> $i')),
         'name': PlutoCell(value: 'Alice'),
         'age': PlutoCell(value: 25),
-        'role': PlutoCell(value: Text('test --> $i')),
       }),
     );
   }
@@ -75,5 +94,3 @@ class PlutoColumnDynamic implements PlutoColumnType {
   @override
   dynamic defaultValue;
 }
-
-

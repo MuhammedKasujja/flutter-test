@@ -24,7 +24,9 @@ dependencies:
   cron: ^0.6.1
   ntp: ^2.0.0
   syncfusion_flutter_datagrid: ^26.2.11
-  pluto_grid: ^8.0.0
+  pluto_grid:
+     git:
+      https://github.com/MuhammedKasujja/pluto_grid.git
   pluto_grid_plus: ^8.4.1
   searchfield: ^1.0.9
   flutter_typeahead: ^5.2.0

@@ -691,10 +691,11 @@ packages:
   pluto_grid:
     dependency: "direct main"
     description:
-      name: pluto_grid
-      sha256: "1d4cd9d2652742b556aa9b3230cc64672a3f63c34a9acc80fef794ab36ad903b"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: HEAD
+      resolved-ref: "1a50b2efde70551d9c06e095fc5fe42263b519cd"
+      url: "https://github.com/MuhammedKasujja/pluto_grid.git"
+    source: git
     version: "8.0.0"
   pluto_grid_plus:
     dependency: "direct main"

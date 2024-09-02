@@ -63,7 +63,7 @@ class _CustomAutocompleteState<T extends Object>
         textEditingController: null,
         optionsBuilder: (TextEditingValue textEditingValue) {
           if (textEditingValue.text.isEmpty) {
-            return [];
+            return widget.options;
           }
           return widget.options.where((T option) {
             return widget
